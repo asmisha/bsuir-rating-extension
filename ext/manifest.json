@@ -1,0 +1,31 @@
+{
+//  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAryYFdMroKWlO0ZyMmsSyONeIlD7lLTg+8xrQzrSOBoCQXA3TlNzo2xBKmCpYthjDDFI6sscNf9U1IxxyiRg/mOx2RJ2ZUmJ6GXcxhHn+X4qfXzuSMRMulgFN52DvjDWSXsOOPu6gGZiaB0EcWiF+qpix4HK9VNVA3Q6anzz/g22E0pjSh9G0tIbkDjrQVGWLuNwNEgH3mY+dO0cWqTPdf7x2qhJikwAB0DtvLkF68GskRP05XYiNUNpzZtm9BA6zLQe19OTfKCspfccDGPaTLQq2oeGKQLOu79FoZq7m2dCxoQnqMmdL8u/trkfyak0/lCugwIgz7nciG9SFYhK1iQIDAQAB",
+  "manifest_version": 2,
+  "name":    "BSUIR MRS",
+  "version": "0.0",
+  "offline_enabled": true,
+
+  "background": {
+//    "persistent": false,
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [{
+    "matches": ["*://mrs.bsuir.by/*"],
+    "js":      ["jquery.js", "content.js"]
+  }],
+
+  "browser_action": {
+    "default_title": "BSUIR MRS"
+    //"default_icon": {
+    //    "19": "img/icon19.png",
+    //    "38": "img/icon38.png"
+    //},
+//    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "*://mrs.bsuir.by/",
+    "tabs"
+  ]
+}

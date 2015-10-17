@@ -1,0 +1,22 @@
+html, body {height: 100%}
+#content-wrapper{position: relative;height: 100%;}
+#actions{background: none;position: absolute;bottom: 0;width: 100%;}
+#users{position: absolute;bottom: 88px;top: 193px;right: 15px;left: 15px;}
+#users>div{height: 100%;}
+#users>div div.widget{height: 100%;padding-bottom: 66px;}
+#users>div div.widget div.widget-body{height: 100%;}
+#users>div#users-col div.widget div.widget-body{overflow-y: scroll;}
+.throbber-loader:not(:required):before, .throbber-loader:not(:required):after, .throbber-loader:not(:required) {height: 34px;}
+.row{margin-left: -15px !important;/*margin-right: -15px !important;*/}
+.row>div {margin-bottom: 0px;padding-right:0!important;}
+.widget .widget-header{padding: 10px 30px;}
+.page-content{padding: 0 15px;}
+.widget .widget-body button { margin-left: 0;}
+.form-horizontal {margin: 15px;}
+.dashboard-header .widget{height: 100px;}
+
+.message-template{max-height: 49px;overflow: hidden;margin-bottom: 10px;position:relative;}
+.message-template.active{max-height: 1000px;}
+.message-template .actions{position: absolute;right: 0;bottom: 15px;z-index: 1;}
+
+.filter{width: 300px;position: absolute;right: 0;top: 0;bottom: 0;}

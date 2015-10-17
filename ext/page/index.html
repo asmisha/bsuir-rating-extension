@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="ext">
+<head>
+	<meta charset="utf-8">
+	<meta name="description">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	<script type="text/javascript" src="/page/all.js"></script>
+	<script type="text/javascript" src="/page/js/angular.min.js"></script>
+	<script type="text/javascript" src="/page/js/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="/page/js/angular-cookies.min.js"></script>
+	<script type="text/javascript" src="/page/js/angular-ui-router.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/page/css/angular-csp.css">
+	<link rel="stylesheet" type="text/css" href="/page/css/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/page/css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/page/css/rdash-ui/dist/css/rdash.min.css">
+	<link rel="stylesheet" type="text/css" href="/page/css/spinners.css">
+	<link rel="stylesheet" type="text/css" href="/page/css/custom.css">
+
+	<script type="text/javascript" src="js/module.js"></script>
+
+	<script type="text/javascript" src="/page/js/loading.js"></script>
+	<script type="text/javascript" src="/page/js/widget-body.js"></script>
+	<script type="text/javascript" src="/page/js/widget-footer.js"></script>
+	<script type="text/javascript" src="/page/js/widget-header.js"></script>
+	<script type="text/javascript" src="/page/js/widget.js"></script>
+</head>
+<body ng-controller="init">
+<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+	<div id="content-wrapper">
+		<div class="page-content">
+			<div ui-view></div>
+		</div><!-- End Page Content -->
+	</div><!-- End Content Wrapper -->
+</div><!-- End Page Wrapper -->
+</body>
+</html>

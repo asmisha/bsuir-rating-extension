@@ -1,0 +1,1 @@
+../../../bower_components/rdash-angular/src/js/directives/widget.js

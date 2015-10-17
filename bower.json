@@ -1,0 +1,19 @@
+{
+  "name": "ext",
+  "version": "0.0.0",
+  "authors": [
+    "Michael Astashkevich <asmisha@tut.by>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "css-spinners": "~2.2.0",
+    "rdash-angular": "git://github.com/rdash/rdash-angular.git"
+  }
+}
