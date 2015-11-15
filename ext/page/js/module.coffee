@@ -26,42 +26,22 @@ class @Extension
         ), 500)
         return
 
-    @setMarks: (tabId, students, callback) ->
+    @setMarks: (tabId, students, overwriteOld, callback) ->
         Extension.emit(tabId, 'content', 'setMarks', {
             students: students
+            overwriteOld: overwriteOld
         }, callback)
         return
 
-angular.module('ext', ['RDash']);
-angular.module('RDash', ['ui.bootstrap', 'ui.router', 'ngCookies']);
-
-angular.module('ext')
-
-routes =
-    index:
-        url: '/?tab'
-        template: 'index.html'
+angular.module('ext', ['ui.router'])
+.config(($stateProvider, $urlRouterProvider) ->
+    $urlRouterProvider.otherwise("/")
+    $stateProvider.state('index',
+        url: "/?tab",
+        templateUrl: '/page/templates/index.html'
         controller: 'index'
-
-angular.module('ext').config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
-    addRoute = ($stateProvider, p, n, r) ->
-        state =
-            url: r.url
-            controller: r.controller
-            reloadOnSearch: r.reloadOnSearch
-        if (r.template)
-            state.templateUrl = '/page/templates/' + r.template + '?' + (new Date().getTime() / 1000 | 0)
-        if (r.views)
-            state.views = r.views;
-        $stateProvider.state(p + n, state)
-        if r.routes
-            for nn of r.routes
-                addRoute($stateProvider, p + n + '.', nn, r.routes[nn])
-
-    $urlRouterProvider.otherwise '/'
-    for name of routes
-        addRoute($stateProvider, '', name, routes[name])
-]).filter('join', ()->
+    )
+).filter('join', ()->
     (x, y) ->
         x.join(y)
 
@@ -69,6 +49,7 @@ angular.module('ext').config(['$stateProvider', '$urlRouterProvider', ($statePro
     '$scope'
     '$stateParams'
     ($scope, $stateParams) ->
+        console.log($stateParams.tab * 1)
         $scope.labs = {
             minCnt: 3
             cnt: 8
@@ -127,25 +108,25 @@ angular.module('ext').config(['$stateProvider', '$urlRouterProvider', ($statePro
                 minL = Math.min(minL, i.l)
                 maxL = Math.max(maxL, i.l)
 
-            q = 0.7
+            q = 2
             for i in students
                 i.l = (i.l - minL) / (maxL - minL)
                 for j,k in i.labs
                     if j*1 == j
-                        i.labs[k] = 5 + Math.round(5*(q-Math.random()*(1 - i.l)*q))
+#                        i.labs[k] = 10 - Math.round(6*(Math.random()*(1 - i.l)))
+                        i.labs[k] = 10 - Math.round(6*(1-i.l)+q*(Math.random() - 0.5))
+                        i.labs[k] = Math.max(4, i.labs[k])
+                        i.labs[k] = Math.min(10, i.labs[k])
                 i.l = Math.round(i.l * 100)/100
 
             $scope.students = students;
         )
 
         $scope.go = () ->
-            Extension.setMarks($stateParams.tab * 1, $scope.students)
+            Extension.setMarks($stateParams.tab * 1, $scope.students, $scope.labs.overwriteOld)
 
         return
 ]).controller('init', [
-    '$scope'
-    '$cookieStore'
-    '$stateParams'
-    ($scope, $cookieStore, $stateParams) ->
+    () ->
         return
 ])

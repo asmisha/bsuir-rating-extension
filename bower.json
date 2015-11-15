@@ -13,7 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "css-spinners": "~2.2.0",
-    "rdash-angular": "git://github.com/rdash/rdash-angular.git"
+    "angular": "~1.4.7",
+    "bootstrap": "~3.3.5"
   }
 }

@@ -1,1 +1,0 @@
-../../../bower_components/rdash-angular/src/js/directives/loading.js

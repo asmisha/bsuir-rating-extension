@@ -21,9 +21,10 @@
     };
 
     Content.prototype.setMarks = function(params) {
-      var $option, $select, first, i, j, k, k2, k3, l, last, len, len1, len2, m, n, ref, ref1, self, students, tab, tabK, v;
+      var $option, $select, currentValue, first, i, j, k, k2, k3, l, last, len, len1, len2, m, n, overwriteOld, ref, ref1, self, students, tab, tabK, v;
       self = this;
       students = params.students;
+      overwriteOld = params.overwriteOld;
       first = 0;
       ref = $('ul li.tab-link');
       for (tabK = l = 0, len = ref.length; l < len; tabK = ++l) {
@@ -50,13 +51,16 @@
             if (!$select.length) {
               break;
             }
-            v = j;
-            if (v * 1 === v) {
-              $option = $select.find("option[value='" + v + "']");
-            } else {
-              $option = $select.find("option:contains('" + v + "')");
+            currentValue = $select.find('option:selected').val();
+            if (overwriteOld || currentValue * 1 <= 0) {
+              v = j;
+              if (v * 1 === v) {
+                $option = $select.find("option[value='" + v + "']");
+              } else {
+                $option = $select.find("option:contains('" + v + "')");
+              }
+              $option.prop('selected', true);
             }
-            $option.prop('selected', true);
             k2++;
             k3++;
             last = Math.max(last, k2);

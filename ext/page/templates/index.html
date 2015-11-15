@@ -1,6 +1,12 @@
 <div class="row">
 	<div class="col-sx-12">
+		<label>Данные</label>
 		<textarea class="form-control" ng-model="labs.text"></textarea>
+		<p>
+			Формат: Имя (по порядку), номера сданных лабораторных в любом порядке через запятую.
+			Оценка тем выше, чем длиннее строка без имени и запятых.
+			Если сдано лабораторных меньше минимального количества, то ставится "нб", иначе "нз"
+		</p>
 	</div>
 </div>
 <div class="row">
@@ -14,15 +20,26 @@
 	</div>
 </div>
 <div class="row">
+	<div class="col-sx-12 checkbox">
+		<label>
+			<input type="checkbox" ng-model="labs.overwriteOld"> Изменять поставленные ранее оценки
+		</label>
+	</div>
+</div>
+<div class="row">
 	<div class="col-sx-12">
 		<a class="btn btn-default" ng-click="go()">Поехали</a>
 	</div>
 </div>
 
-<table class="table">
-	<tr ng-repeat="s in students track by $index">
-		<td>{{s.name}}</td>
-		<td>{{s.l}}</td>
-		<td ng-repeat="l in s.labs track by $index">{{l}}</td>
-	</tr>
-</table>
+<div class="row">
+	<div class="col-sx-12">
+		<table class="table">
+			<tr ng-repeat="s in students track by $index">
+				<td>{{s.name}}</td>
+				<td>{{s.l}}</td>
+				<td ng-repeat="l in s.labs track by $index">{{l}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

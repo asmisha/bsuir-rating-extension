@@ -16,6 +16,7 @@ class Content
     setMarks: (params) ->
         self = this
         students = params.students
+        overwriteOld = params.overwriteOld
 
         first = 0
         for tab,tabK in $('ul li.tab-link')
@@ -40,15 +41,19 @@ class Content
                     if !$select.length
                         break
 
-                    v = j
-                    if v*1 == v
-                        $option = $select.find("option[value='#{v}']")
-                    else
-                        $option = $select.find("option:contains('#{v}')")
-                    $option.prop('selected', true)
+                    currentValue = $select.find('option:selected').val()
+                    if overwriteOld || currentValue*1<=0
+                        v = j
+                        if v*1 == v
+                            $option = $select.find("option[value='#{v}']")
+                        else
+                            $option = $select.find("option:contains('#{v}')")
+                        $option.prop('selected', true)
+
                     k2++
                     k3++
                     last = Math.max(last, k2)
+
             first = last
 
         for i in $('form')
